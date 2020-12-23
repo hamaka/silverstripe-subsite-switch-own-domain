@@ -1,6 +1,6 @@
 <?php
 
-    namespace Hamaka\Extensions;
+    namespace Hamaka\SilverstripeSubsiteSwitchOwnDomain\Extension;
 
     use SilverStripe\Control\Controller;
     use SilverStripe\ORM\ArrayList;
@@ -15,7 +15,7 @@
 
         public function init()
         {
-            Requirements::javascript('hamaka/app:client/javascript/SubsiteDropdownRedirect.js');
+            Requirements::javascript('hamaka/silverstripe-subsite-switch-own-domain:client/dist/js/SubsiteDropdownRedirect.js');
         }
 
         public function HmkListSubsites()
@@ -27,7 +27,7 @@
                 return false;
             }
 
-            Requirements::javascript('hamaka/app:client/javascript/SubsiteDropdownRedirect.js');
+            Requirements::javascript('hamaka/silverstripe-subsite-switch-own-domain:client/dist/js/SubsiteDropdownRedirect.js');
 
             $output    = ArrayList::create();
             $sAdminUrl = 'admin';
