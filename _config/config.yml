@@ -1,0 +1,6 @@
+---
+Name: subsite-dropdown-redirect
+---
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Hamaka\Extensions\SubsiteDropdownRedirect
