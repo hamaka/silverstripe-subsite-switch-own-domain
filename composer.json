@@ -2,6 +2,7 @@
     "name": "hamaka/silverstripe-subsite-switch-own-domain",
     "description": "Open CMS interface for subsite on own domain",
     "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/hamaka/silverstripe-subsite-switch-own-domain",
     "keywords": [
         "silverstripe",
         "CMS",
@@ -18,7 +19,11 @@
             "hamaka\\silverstripe-subsite-switch-own-domain": "src/"
         }
     },
+    "support": {
+        "issues": "https://github.com/hamaka/silverstripe-subsite-switch-own-domain/issues"
+    },
     "extra": {
+        "installer-name": "Silverstripe Subsite on own domain",
         "branch-alias": {
             "dev-master": "2.x-dev"
         },
