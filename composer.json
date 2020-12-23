@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "hamaka\\silverstripe-subsite-switch-own-domain": "src/"
+            "hamaka\\silverstripe-subsite-switch-own-domain\\": "src/"
         }
     },
     "support": {
