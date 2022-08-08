@@ -3,6 +3,7 @@
     namespace Hamaka\SilverstripeSubsiteSwitchOwnDomain\Extension;
 
     use SilverStripe\Control\Controller;
+    use SilverStripe\Core\Environment;
     use SilverStripe\ORM\ArrayList;
     use SilverStripe\ORM\DataExtension;
     use SilverStripe\Subsites\Model\Subsite;
@@ -32,10 +33,10 @@
             $output    = ArrayList::create();
             $sAdminUrl = 'admin';
 
-            // voor localhost nog een mapnaam voor de admin-url plakken
+            // if site is hosted in folder (localhost/project.com), fix this for subsite URL (@todo needs better solution)
             $localHostFolder = explode('/', $_SERVER['REQUEST_URI'])[1];
-            if (strpos($localHostFolder, '.nl') !== false) {
-                $sAdminUrl = $localHostFolder . '/admin';
+            if (strpos($localHostFolder, '.nl') !== false || strpos($localHostFolder, '.com') !== false) {
+                $sAdminWithinFolder = $localHostFolder;
             }
 
             foreach ($list as $subsite) {
@@ -44,14 +45,17 @@
                 $domainURL    = '';
                 $domainObject = $subsite->getPrimarySubsiteDomain();
                 if ($domainObject) {
-                    $domainURL = Controller::join_links($domainObject->Link(), $sAdminUrl);
+                    $domainURL = Controller::join_links($domainObject->Link(), $sAdminWithinFolder, $sAdminUrl);
+                }
+                else {
+                    $domainURL = Controller::join_links(Environment::getEnv('SS_BASE_URL'), $sAdminUrl);
                 }
 
                 $output->push(ArrayData::create([
-                  'CurrentState' => $currentState,
-                  'ID'           => $subsite->ID,
-                  'Title'        => $subsite->Title,
-                  'Link'         => $domainURL
+                    'CurrentState' => $currentState,
+                    'ID'           => $subsite->ID,
+                    'Title'        => $subsite->Title,
+                    'Link'         => $domainURL
                 ]));
             }
 
