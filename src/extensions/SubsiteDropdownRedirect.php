@@ -34,6 +34,7 @@
             $sAdminUrl = 'admin';
 
             // if site is hosted in folder (localhost/project.com), fix this for subsite URL (@todo needs better solution)
+            $sAdminWithinFolder = '';
             $localHostFolder = explode('/', $_SERVER['REQUEST_URI'])[1];
             if (strpos($localHostFolder, '.nl') !== false || strpos($localHostFolder, '.com') !== false) {
                 $sAdminWithinFolder = $localHostFolder;
